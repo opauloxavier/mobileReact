@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "devDependencies": {
+    "eslint-config-rallycoding": "^3.2.0",
     "jest-expo": "25.0.0",
     "react-native-scripts": "1.11.1",
     "react-test-renderer": "16.2.0"
@@ -19,9 +20,8 @@
     "preset": "jest-expo"
   },
   "dependencies": {
-    "eslint-config-rallycoding": "^3.2.0",
+    "create-react-app": "^1.5.2",
     "expo": "^25.0.0",
-    "global": "^4.3.2",
     "react": "16.2.0",
     "react-native": "0.52.0"
   }

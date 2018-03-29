@@ -1,7 +1,7 @@
 import React from 'react';
 import { View } from 'react-native';
 
-export default function CardSection(props) {
+const CardSection = (props) => {
     const { containerStyle } = styles;
 
     return (
@@ -9,7 +9,7 @@ export default function CardSection(props) {
             {props.children}
         </View>
     );
-}
+};
 
 const styles = {
     containerStyle: {
@@ -22,4 +22,6 @@ const styles = {
         position: 'relative'
     }
 };
+
+export { CardSection };
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Text, View } from 'react-native';
 
-export default function Header({ title }) {
+const Header = ({ title }) => {
         const { textStyle, viewStyle } = styles;
 
         return (
@@ -27,3 +27,5 @@ const styles = {
         position: 'relative'
     }
 };
+
+export { Header };

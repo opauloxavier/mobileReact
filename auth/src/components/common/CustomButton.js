@@ -1,7 +1,7 @@
 import React from 'react';
 import { TouchableOpacity, Text } from 'react-native';
 
-export default function CustomButton({ children, onPress }) {
+const CustomButton = ({ children, onPress }) => {
     const { buttonStyle, textStyle } = styles;
 
     return (
@@ -11,7 +11,7 @@ export default function CustomButton({ children, onPress }) {
             </Text>
         </TouchableOpacity>
     );
-}
+};
 
 
 const styles = {
@@ -35,3 +35,4 @@ const styles = {
     }
 };
 
+export { CustomButton };
