@@ -23,6 +23,7 @@
     "create-react-app": "^1.5.2",
     "expo": "^25.0.0",
     "react": "16.2.0",
-    "react-native": "0.52.0"
+    "react-native": "0.52.0",
+    "firebase": "^4.12.1"
   }
 }
