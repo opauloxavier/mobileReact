@@ -8,7 +8,7 @@ const Header = ({ title }) => {
             <View style={viewStyle}>
                 <Text style={textStyle}>{title}</Text>
             </View>);
-}
+};
 
 const styles = {
     textStyle: {
