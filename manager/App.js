@@ -1,12 +1,12 @@
-import React from 'react';
-import { View } from 'react-native';
+import React, { Component } from 'react';
 import { Provider } from 'react-redux';
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
 import firebase from 'firebase';
+import ReduxThunk from 'redux-thunk';
 import reducers from './src/reducers';
-import LoginForm from './src/components/LoginForm';
+import Router from './src/Router';
 
-export default class App extends React.Component {
+export default class App extends Component {
   componentDidMount() {
     firebase.initializeApp({
       apiKey: 'AIzaSyDhHB3RDsugdvDd4ZUgAWCcwADZKErcAvQ',
@@ -20,10 +20,8 @@ export default class App extends React.Component {
 
   render() {
     return (
-      <Provider store={createStore(reducers)} >
-        <View>
-          <LoginForm />
-        </View>
+      <Provider store={createStore(reducers, {}, applyMiddleware(ReduxThunk))} >
+          <Router />
       </Provider>
     );
   }
