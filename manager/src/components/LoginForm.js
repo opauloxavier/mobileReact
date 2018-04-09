@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { View, Text } from 'react-native';
-import { emailChanged, passwordChanged, loginUser } from '../actions';
+import { authUpdate, loginUser } from '../actions';
 import { CardSection, Input, Card, CustomButton, Spinner } from './common';
 
 
@@ -49,7 +49,7 @@ class LoginForm extends Component {
                     <Input
                         label='Email'
                         placeholder='email@gmail.com'
-                        onChangeText={this.onEmailChange.bind(this)}
+                        onChangeText={(text) => this.props.authUpdate({prop: 'email',value: text})}
                         value={this.props.email}
                     />
                 </CardSection>
@@ -58,7 +58,7 @@ class LoginForm extends Component {
                         secure
                         label='Password'
                         placeholder='password'
-                        onChangeText={this.onPasswordChange.bind(this)}
+                        onChangeText={(text) => this.props.authUpdate({prop: 'password', value: text})}
                         value={this.props.password}
                     />
                 </CardSection>
@@ -73,12 +73,12 @@ class LoginForm extends Component {
     }
 }
 
-const mapStateToProps = state => ({
-    email: state.auth.email,
-    password: state.auth.password,
-    error: state.auth.error,
-    loading: state.auth.loading
-});
+const mapStateToProps = state => {
+    const { email, password, error, loading } = state.auth;
+
+    return { email, password, error, loading };
+
+};
 
 const styles = {
     errorTextStyle: {
@@ -88,4 +88,4 @@ const styles = {
     }
 };
 
-export default connect(mapStateToProps, { emailChanged, passwordChanged, loginUser })(LoginForm);
+export default connect(mapStateToProps, { authUpdate, loginUser })(LoginForm);
