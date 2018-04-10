@@ -6,14 +6,6 @@ import { CardSection, Input, Card, CustomButton, Spinner } from './common';
 
 
 class LoginForm extends Component {
-    onEmailChange(text) {
-        this.props.emailChanged(text);
-    }
-
-    onPasswordChange(text) {
-        this.props.passwordChanged(text);
-    }
-
     onButtonPress() {
         const { email, password } = this.props;
         this.props.loginUser({ email, password });
@@ -49,7 +41,10 @@ class LoginForm extends Component {
                     <Input
                         label='Email'
                         placeholder='email@gmail.com'
-                        onChangeText={(text) => this.props.authUpdate({prop: 'email',value: text})}
+                        onChangeText={
+                            (text) => 
+                                this.props.authUpdate({ prop: 'email', value: text })
+                            }
                         value={this.props.email}
                     />
                 </CardSection>
@@ -58,7 +53,10 @@ class LoginForm extends Component {
                         secure
                         label='Password'
                         placeholder='password'
-                        onChangeText={(text) => this.props.authUpdate({prop: 'password', value: text})}
+                        onChangeText={
+                            (text) => 
+                                this.props.authUpdate({ prop: 'password', value: text })
+                            }
                         value={this.props.password}
                     />
                 </CardSection>
@@ -77,7 +75,6 @@ const mapStateToProps = state => {
     const { email, password, error, loading } = state.auth;
 
     return { email, password, error, loading };
-
 };
 
 const styles = {

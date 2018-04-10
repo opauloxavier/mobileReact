@@ -15,7 +15,7 @@ class EmployeeCreate extends Component {
 
     render() {
         const { pickerTextStyle } = styles;
-
+        
         return (
             <Card>
                 <CardSection>

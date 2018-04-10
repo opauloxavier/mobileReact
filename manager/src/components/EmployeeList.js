@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { FlatList, Text } from 'react-native';
+import { Actions } from 'react-native-router-flux';
+import { FlatList, Text, TouchableHighlight } from 'react-native';
 import _ from 'lodash';
 import { Card, CardSection } from './common';
 import { employeesFetch } from '../actions';
@@ -12,18 +13,23 @@ class EmployeeList extends Component {
         this.props.employeesFetch();
     }
 
+    onRowPress(employee) {
+        Actions.employeeCreate({ employee });
+    }
+
     keyExtractor({ uid }) {
         return String(uid);
     }
 
     renderEmployee({ item }) {
-        const { name, phone, shift } = item;
+        const { name } = item;
+
         return (
-            <CardSection>
-                <Text>{name}</Text>
-                <Text>{phone}</Text>
-                <Text>{shift}</Text>
-            </CardSection>
+            <TouchableHighlight onPress={this.onRowPress.bind(this, item)}>
+                <CardSection>
+                    <Text style={styles.titleStyle}>{name}</Text>
+                </CardSection>
+            </TouchableHighlight>
         );
     }
 
@@ -32,13 +38,20 @@ class EmployeeList extends Component {
             <Card>
                 <FlatList
                     data={this.props.employees}
-                    renderItem={this.renderEmployee}
+                    renderItem={this.renderEmployee.bind(this)}
                     keyExtractor={this.keyExtractor}
                 />
             </Card>
         );
     }
 }
+
+const styles = {
+    titleStyle: {
+        fontSize: 18,
+        paddingLeft: 15
+    }
+};
 
 const mapStateToProps = (state) => {
     const employees = _.map(state.employees, (val, uid) => {
