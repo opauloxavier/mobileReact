@@ -14,7 +14,7 @@ class EmployeeList extends Component {
     }
 
     onRowPress(employee) {
-        Actions.employeeCreate({ employee });
+        Actions.employeeEdit({ employee });
     }
 
     keyExtractor({ uid }) {

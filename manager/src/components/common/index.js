@@ -4,3 +4,4 @@ export * from './CardSection';
 export * from './CustomButton';
 export * from './Input';
 export * from './Spinner';
+export * from './Confirm';
