@@ -1,10 +1,19 @@
 import React, { Component } from 'react';
-import { View, Animated } from 'react-native';
+import { View, Animated, TouchableHighlight } from 'react-native';
 
 export default class Ball extends Component {
 
+    constructor(props) {
+        super(props);
+
+        this.position = new Animated.ValueXY(0, 0); 
+    }
+
     componentWillMount() {
-        this.position = new Animated.ValueXY(0, 0);
+      
+    }
+
+    animateBall() {
         Animated.spring(this.position, {
             toValue: { x: 200, y: 500 }
         }).start();
@@ -13,7 +22,9 @@ export default class Ball extends Component {
     render() {
         return (
             <Animated.View style={this.position.getLayout()}>
-                <View style={styles.ball} />
+                <TouchableHighlight onPress={this.animateBall.bind(this)}>
+                    <View style={styles.ball} />
+                </TouchableHighlight>
             </Animated.View>
         );
     }
